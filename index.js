@@ -29,10 +29,12 @@ function operate(firstNum, op, secondNum){
 }
 
 const display = document.querySelector('.display');
+let displayValue = 0;
 
 // populates the display with clicked number or the computed result
 function populateDisplay(e){
     display.textContent = e;
+    displayValue = e;
 }
 
 
@@ -40,6 +42,8 @@ function populateDisplay(e){
 const numbers = document.querySelectorAll('.number')
 numbers.forEach(number => number.addEventListener('click', function(e){
     populateDisplay(e.target.textContent);
+    console.log(displayValue);
 }))
+
 
 
