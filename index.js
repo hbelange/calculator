@@ -1,5 +1,5 @@
 function add(a, b){
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function subtract(a, b){
@@ -76,6 +76,9 @@ equal.addEventListener('click', (e) => {
 
 let secondNumberStarted = false;
 
+function updateDisplay(result){
+    display.textContent = result;
+}
 
 // enter numbers for first number
 // click operation. store the numbers in a variable as well as the operation
@@ -83,7 +86,6 @@ let secondNumberStarted = false;
 // click equals, store digits for second number in a variable
 // call the function depening on the operation
 // return the value of the operation and store it in the first variable
-
 
 
 
