@@ -33,8 +33,11 @@ let displayValue = 0;
 
 // populates the display with clicked number or the computed result
 function populateDisplay(e){
-    display.textContent = e;
-    displayValue = e;
+    if (display.textContent === '0'){
+        display.textContent = '';
+    }
+    display.textContent += e;
+    displayValue += e;
 }
 
 
@@ -44,6 +47,17 @@ numbers.forEach(number => number.addEventListener('click', function(e){
     populateDisplay(e.target.textContent);
     console.log(displayValue);
 }))
+
+// event listner to clear display
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', (e) => {
+    display.textContent = '0';
+})
+
+// click button
+// make it appear on screen
+// display variable and store it in first number
+// click operation
 
 
 
