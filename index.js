@@ -14,7 +14,9 @@ function divide(a, b){
     return a / b;
 }
 
-let firstNumber, operator, secondNumber; // three parts of a calculator operation
+let firstNumber = 0;
+let operator = ''
+let secondNumber = 0; // three parts of a calculator operation
 
 function operate(firstNum, op, secondNum){
     if (op === "+"){
@@ -54,7 +56,7 @@ numbers.forEach(number => number.addEventListener('click', function(e){
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', (e) => {
     display.textContent = '0';
-    firstNumber = '';
+    firstNumber = 0;
     secondNumber = '';
     operator = '';
 })
@@ -62,6 +64,7 @@ clear.addEventListener('click', (e) => {
 // event listener for operator
 const operators = document.querySelectorAll('.operator');
 operators.forEach(op => op.addEventListener('click', (e) => {
+    operationPerformed = false;
     // whatever numbers are currently stored in the display we want to save
     firstNumber = display.textContent;
     // store whichever operation was selected into the operator variable
@@ -72,23 +75,24 @@ operators.forEach(op => op.addEventListener('click', (e) => {
 // event listener for equal
 const equal = document.querySelector('.equal');
 equal.addEventListener('click', (e) => {
-    secondNumber = display.textContent;
+    if (operationPerformed){
+        firstNumber = operate(firstNumber, operator, secondNumber);
+    } else {
+        secondNumber = display.textContent;
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        operationPerformed = true;
+    }
+    
     // call function to operate
-    display.textContent = operate(firstNumber, operator, secondNumber);
+    updateDisplay(firstNumber);
 })
 
 let secondNumberStarted = false;
+let operationPerformed = false;
 
 function updateDisplay(result){
     display.textContent = result;
 }
 
-// enter numbers for first number
-// click operation. store the numbers in a variable as well as the operation
-// click numbers for scond number. 
-// click equals, store digits for second number in a variable
-// call the function depening on the operation
-// return the value of the operation and store it in the first variable
-
-
+// if the user selects a second operator, i need to assign result of first operation to the first number
 
