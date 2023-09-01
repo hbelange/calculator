@@ -18,32 +18,29 @@ let firstNumber, operator, secondNumber; // three parts of a calculator operatio
 
 function operate(firstNum, op, secondNum){
     if (op === "+"){
-        add(firstNum, secondNum);
+        return add(firstNum, secondNum);
     } else if (op === '-'){
-        subtract(firstNum, secondNum);
-    } else if (op === '*'){
-        multiply(firstNum, secondNum);
+        return subtract(firstNum, secondNum);
+    } else if (op === 'X'){
+        return multiply(firstNum, secondNum);
     } else if (op === '/'){
-        divide(firstNum, secondNum);
+        return divide(firstNum, secondNum);
     }
 }
 
 const display = document.querySelector('.display');
-let displayValue = '';
 
 // populates the display with clicked number or the computed result
 function populateDisplay(e){
     if (secondNumberStarted){
         // reset display if the operator has been selected, preceed as normal
         display.textContent = '';
-        displayValue = '';
         secondNumberStarted = false;
     }
     if (display.textContent === '0'){
         display.textContent = '';
     }
     display.textContent += e;
-    displayValue += e;
 }
 
 
@@ -68,6 +65,14 @@ operators.forEach(op => op.addEventListener('click', (e) => {
     operator = e.target.textContent;
     secondNumberStarted = true;
 }))
+
+// event listener for equal
+const equal = document.querySelector('.equal');
+equal.addEventListener('click', (e) => {
+    secondNumber = display.textContent;
+    // call function to operate
+    display.textContent = operate(firstNumber, operator, secondNumber);
+})
 
 let secondNumberStarted = false;
 
