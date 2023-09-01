@@ -28,3 +28,18 @@ function operate(firstNum, op, secondNum){
     }
 }
 
+const display = document.querySelector('.display');
+
+// populates the display with clicked number or the computed result
+function populateDisplay(e){
+    display.textContent = e;
+}
+
+
+// event listner for number buttons
+const numbers = document.querySelectorAll('.number')
+numbers.forEach(number => number.addEventListener('click', function(e){
+    populateDisplay(e.target.textContent);
+}))
+
+
