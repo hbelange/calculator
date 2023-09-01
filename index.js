@@ -56,7 +56,7 @@ numbers.forEach(number => number.addEventListener('click', function(e){
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', (e) => {
     display.textContent = '0';
-    firstNumber = 0;
+    firstNumber = '';
     secondNumber = '';
     operator = '';
 })
@@ -65,8 +65,14 @@ clear.addEventListener('click', (e) => {
 const operators = document.querySelectorAll('.operator');
 operators.forEach(op => op.addEventListener('click', (e) => {
     operationPerformed = false;
-    // whatever numbers are currently stored in the display we want to save
-    firstNumber = display.textContent;
+    if (firstNumber == '') {
+        // whatever numbers are currently stored in the display we want to save
+        firstNumber = display.textContent;
+    } else {
+        secondNumber = display.textContent
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        updateDisplay(firstNumber);
+    }
     // store whichever operation was selected into the operator variable
     operator = e.target.textContent;
     secondNumberStarted = true;
