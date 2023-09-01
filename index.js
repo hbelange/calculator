@@ -54,6 +54,9 @@ numbers.forEach(number => number.addEventListener('click', function(e){
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', (e) => {
     display.textContent = '0';
+    firstNumber = '';
+    secondNumber = '';
+    operator = '';
 })
 
 // event listener for operator
