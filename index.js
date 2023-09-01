@@ -56,7 +56,7 @@ numbers.forEach(number => number.addEventListener('click', function(e){
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', (e) => {
     display.textContent = '0';
-    firstNumber = '';
+    firstNumber = 0;
     secondNumber = '';
     operator = '';
 })
@@ -64,15 +64,13 @@ clear.addEventListener('click', (e) => {
 // event listener for operator
 const operators = document.querySelectorAll('.operator');
 operators.forEach(op => op.addEventListener('click', (e) => {
+
+    // if theres a first and second number, operate it before continuing
+    // if there isnt a second number,proceed as usaul
+
     operationPerformed = false;
-    if (firstNumber == '') {
-        // whatever numbers are currently stored in the display we want to save
-        firstNumber = display.textContent;
-    } else {
-        secondNumber = display.textContent
-        firstNumber = operate(firstNumber, operator, secondNumber);
-        updateDisplay(firstNumber);
-    }
+    // whatever numbers are currently stored in the display we want to save
+    firstNumber = display.textContent;
     // store whichever operation was selected into the operator variable
     operator = e.target.textContent;
     secondNumberStarted = true;
@@ -101,4 +99,3 @@ function updateDisplay(result){
 }
 
 // if the user selects a second operator, i need to assign result of first operation to the first number
-
