@@ -45,21 +45,26 @@ function populateDisplay(e){
     display.textContent += e;
 }
 
+function clearDisplay(){
+    display.textContent = '0';
+    firstNumber = 0;
+    secondNumber = '';
+    operator = '';
+}
 
 // event listner for number buttons
 const numbers = document.querySelectorAll('.number')
 numbers.forEach(number => number.addEventListener('click', function(e){
+    if (operationPerformed){
+        clearDisplay();
+    }
     populateDisplay(e.target.textContent);
 }))
 
 // event listner to clear display
 const clear = document.querySelector('.clear');
-clear.addEventListener('click', (e) => {
-    display.textContent = '0';
-    firstNumber = 0;
-    secondNumber = '';
-    operator = '';
-})
+clear.addEventListener('click', () => clearDisplay());
+
 
 // event listener for operator
 const operators = document.querySelectorAll('.operator');
