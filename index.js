@@ -1,3 +1,6 @@
+let secondNumberStarted = false;
+let operationPerformed = false;
+
 function add(a, b){
     return Number(a) + Number(b);
 }
@@ -12,6 +15,10 @@ function multiply(a, b){
 
 function divide(a, b){
     return a / b;
+}
+
+function updateDisplay(result){
+    display.textContent = result;
 }
 
 let firstNumber = 0;
@@ -50,6 +57,7 @@ function clearDisplay(){
     firstNumber = 0;
     secondNumber = '';
     operator = '';
+    secondNumberStarted = false;
 }
 
 // event listner for number buttons
@@ -58,7 +66,13 @@ numbers.forEach(number => number.addEventListener('click', function(e){
     if (operationPerformed){
         clearDisplay();
     }
-    populateDisplay(e.target.textContent);
+    if (display.textContent === '0' || secondNumberStarted) {
+        display.textContent = e.target.textContent;
+        secondNumberStarted = false;
+    } else {
+        populateDisplay(e.target.textContent);
+    }
+    
 }))
 
 // event listner to clear display
@@ -103,11 +117,8 @@ equal.addEventListener('click', (e) => {
     updateDisplay(firstNumber);
 })
 
-let secondNumberStarted = false;
-let operationPerformed = false;
 
-function updateDisplay(result){
-    display.textContent = result;
-}
+
+
 
 // if the user selects a second operator, i need to assign result of first operation to the first number
