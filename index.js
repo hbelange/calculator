@@ -16,7 +16,7 @@ function divide(a, b){
 
 let firstNumber = 0;
 let operator = ''
-let secondNumber = 0; // three parts of a calculator operation
+let secondNumber = ''; // three parts of a calculator operation
 
 function operate(firstNum, op, secondNum){
     if (op === "+"){
@@ -64,13 +64,20 @@ clear.addEventListener('click', (e) => {
 // event listener for operator
 const operators = document.querySelectorAll('.operator');
 operators.forEach(op => op.addEventListener('click', (e) => {
-
-    // if theres a first and second number, operate it before continuing
-    // if there isnt a second number,proceed as usaul
-
+    if (operationPerformed){
+        secondNumber = '';
+        operator = '';
+    }
+    if (firstNumber === 0 && operator === ''){
+        firstNumber = display.textContent;
+    }
+    if (firstNumber != '' && operator != ''){
+        secondNumber = display.textContent;
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        updateDisplay(firstNumber);
+    }
     operationPerformed = false;
     // whatever numbers are currently stored in the display we want to save
-    firstNumber = display.textContent;
     // store whichever operation was selected into the operator variable
     operator = e.target.textContent;
     secondNumberStarted = true;
