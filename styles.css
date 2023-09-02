@@ -1,26 +1,49 @@
 .buttons {
     width: 400px;
+    height: 400px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+
 }
 
 button {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     font-size: 25px;
+    border: none;
+    border-radius: 10px;
+}
+
+.operator, .equal, .clear {
+    background-color: #EF7B45;
+    
 }
 
 .display {
     height: 100px;
-    width: 380px;
+    width: 370px;
     display: flex;
     justify-content: end;
     align-items: end;
     padding: 10px;
     font-size: 50px;
+    background-color: lightgray;
+    border: 5px solid black;
 }
 
 body {
     background-color: #CDEDF6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+    border: 15px solid #042A2B;
+    width: 400px;
 }

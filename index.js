@@ -58,6 +58,7 @@ function clearDisplay(){
     secondNumber = '';
     operator = '';
     secondNumberStarted = false;
+    operationPerformed = false;
 }
 
 // event listner for number buttons
