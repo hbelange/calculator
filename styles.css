@@ -46,4 +46,5 @@ body {
 .calculator {
     border: 15px solid #042A2B;
     width: 400px;
+    border-radius: 10px;
 }
