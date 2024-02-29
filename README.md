@@ -13,7 +13,7 @@ Accessible Anywhere: Use it on any device that has a web browser, whether it's a
 How to Use
 ----------
 
-Open the Calculator: Simply click on the link provided, or if you're more tech-savvy, you can download the code and open the index.html file in a web browser.
+Open the Calculator: Simply click on the link provided https://hbelange.github.io/calculator/, or if you're more tech-savvy, you can download the code and open the index.html file in a web browser.
 
 Do Your Math: Click on the numbers and operations just like you would on a regular calculator.
 
